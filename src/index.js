@@ -6,6 +6,7 @@ import navigation, {
   fromId,
 } from '@navigationjs/core';
 import Modal from './Modal';
+import Wrap from './Wrap';
 
-export { Navigation, Base, Modal, Value, toId, fromId };
+export { Navigation, Base, Modal, Wrap, Value, toId, fromId };
 export default navigation;
