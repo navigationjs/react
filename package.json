@@ -2,7 +2,7 @@
   "name": "@navigationjs/react",
   "version": "0.1.0",
   "description": "Small and well-tested React navigation",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Ivan Zotov <me@ivanzotov.com> (http://ivanzotov.com/)",
   "license": "MIT",
   "private": false,
@@ -20,24 +20,36 @@
   ],
   "scripts": {
     "test": "jest",
+    "build": "yarn babel src/ --out-dir dist/",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "format": "prettier --write '{__tests__,src}/**/*.{js,json}' './*.{js,json}'"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "peerDependencies": {
     "react": "*"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
     "@testing-library/react": "^9.4.0",
+    "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",
     "jest": "^24.9.0",
     "prettier": "^1.16.4",
     "react": "^16.11.0",
-    "react-test-renderer": "^16.11.0"
+    "react-test-renderer": "^16.11.0",
+    "rollup": "^1.27.9",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.3"
   },
   "jest": {
-    "preset": "@testing-library/react",
     "testEnvironment": "node"
   },
   "dependencies": {

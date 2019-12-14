@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import navigation, { toId } from '@navigationjs/core';
-import './styles';
 
 export default class Wrap extends Component {
   onValue = () => {
