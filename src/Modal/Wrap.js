@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import navigation, { toId } from '@navigationjs/core';
 import './styles';
 
-export default class BaseWrap extends Component {
+export default class Wrap extends Component {
   onValue = () => {
     const eventNames = [
       'transitionend',
