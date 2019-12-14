@@ -50,9 +50,17 @@ export default class Wrap extends Component {
         ref={ref => {
           this.element = ref;
         }}
-        className="navigation-modal__wrap"
         style={{
           transform: `translateY(${(1 - scene.active.value) * 100}%)`,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          transitionProperty: 'transform',
+          transitionDuration: '300ms',
+          overflowY: 'auto',
+          backgroundColor: 'white',
         }}
       >
         {typeof children === 'function' ? children(pass) : children}
