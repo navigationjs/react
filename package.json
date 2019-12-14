@@ -1,6 +1,6 @@
 {
   "name": "@navigationjs/react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Small and well-tested React navigation",
   "main": "dist/index.js",
   "author": "Ivan Zotov <me@ivanzotov.com> (http://ivanzotov.com/)",
