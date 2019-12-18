@@ -378,19 +378,15 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@navigationjs/core@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@navigationjs/core/-/core-0.2.3.tgz#1b5cd414ca27145763bfd2304144fa035164c646"
+"@navigationjs/core@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@navigationjs/core/-/core-0.2.4.tgz#ac0264e5beb0717b5315121d849cfb245107d1fa"
   dependencies:
-    "@railsmob/events" "^0.1.7"
+    "@railsmob/events" "^0.1.11"
 
 "@railsmob/events@^0.1.11":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@railsmob/events/-/events-0.1.11.tgz#1bbcc54b6bc70a41f07605b0fb50da5b8ed04dca"
-
-"@railsmob/events@^0.1.7":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@railsmob/events/-/events-0.1.10.tgz#dea72194eb41123803bc5c1275bf3a25f4d488f4"
 
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.2"
