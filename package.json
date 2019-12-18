@@ -1,6 +1,6 @@
 {
   "name": "@navigationjs/react",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Small and well-tested React navigation",
   "main": "dist/index.js",
   "author": "Ivan Zotov <me@ivanzotov.com> (http://ivanzotov.com/)",
@@ -52,7 +52,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "@navigationjs/core": "^0.2.4",
+    "@navigationjs/core": "^0.3.0",
     "@railsmob/events": "^0.1.11"
   }
 }
