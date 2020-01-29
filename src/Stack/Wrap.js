@@ -54,7 +54,7 @@ export default class Wrap extends Component {
         style={{
           transform: `translateX(${(1 - scene.active.value) *
             100}%) translateX(${-(scene.depth.value / 5) * 100}%)`,
-          position: 'fixed',
+          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
