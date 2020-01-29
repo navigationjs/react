@@ -1,4 +1,4 @@
-import Value from '../Value';
+import { Value } from '@navigationjs/core';
 
 export default class Scene {
   constructor(name) {
