@@ -1,13 +1,9 @@
-import navigation, {
-  Navigation,
-  Base,
-  Value,
-  toId,
-  fromId,
-} from '@navigationjs/core';
-import Modal from './Modal';
-import Stack from './Stack';
-import Wrap from './Wrap';
+import navigation, { Navigation, toId, fromId } from '@navigationjs/core';
+import Stack from './src/Stack';
+import Tab from './src/Tab';
+import Modal from './src/Modal';
+import Value from './src/Value';
+import Wrap from './src/Wrap';
 
-export { Navigation, Base, Modal, Stack, Wrap, Value, toId, fromId };
+export { Navigation, Stack, Tab, Modal, Value, Wrap, toId, fromId };
 export default navigation;

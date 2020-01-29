@@ -18,18 +18,10 @@ export default class Navigator {
   go = async (name, duration) => {
     const scene = this.scenes[name];
     if (!scene) return Promise.reject();
-
-    const alreadyInHistory = this.history.current() === name;
-    if (alreadyInHistory) return Promise.resolve();
-
-    const promises = this.history.chain.map((sceneName, index) => {
-      const scene = this.scenes[sceneName];
-      const level = this.history.chain.length - index - 1;
-      return scene.dive(level + 1, duration);
+    const promises = [];
+    Object.values(this.scenes).forEach(it => {
+      promises.push(it.name === name ? it.show(duration) : it.hide(duration));
     });
-
-    promises.push(scene.show(duration));
-
     await Promise.all(promises);
     this.history.push(name);
   };
@@ -38,21 +30,15 @@ export default class Navigator {
 
   back = async duration => {
     if (this.history.isEmpty()) return Promise.resolve();
-
-    const promises = [];
-
     const name = this.current();
     const scene = this.scenes[name];
     if (!scene) return Promise.reject();
-
+    const promises = [];
     promises.push(scene.hide(duration));
-
-    this.history.chain.forEach((sceneName, index) => {
-      const scene = this.scenes[sceneName];
-      const level = this.history.chain.length - index - 1;
-      promises.push(scene.dive(level - 1, duration));
-    });
-
+    const newSceneName = this.history.chain[this.history.chain.length - 2];
+    const newScene = this.scenes[newSceneName];
+    if (!newScene) return Promise.reject();
+    promises.push(newScene.show(duration));
     await Promise.all(promises);
     this.history.pop();
   };
