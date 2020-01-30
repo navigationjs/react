@@ -3,7 +3,7 @@ import { Value } from '@navigationjs/core';
 export default class Scene {
   constructor(name) {
     this.name = name;
-    this.active = new Value('active');
+    this.active = new Value('active', 0, 300);
     this.depth = new Value('depth');
   }
   show = duration =>

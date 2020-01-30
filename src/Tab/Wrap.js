@@ -57,7 +57,7 @@ export default class Wrap extends Component {
           right: 0,
           bottom: 0,
           transitionProperty: 'transform',
-          transitionDuration: '300ms',
+          transitionDuration: `${scene.active.duration}ms`,
           overflowY: 'auto',
           backgroundColor: 'white',
         }}
