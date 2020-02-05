@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 import navigation, { toId } from '@navigationjs/core';
 
 export default class Wrap extends Component {
-  onValue = () => {
+  constructor(props) {
+    super(props);
+
+    const { navigator: navigatorName, scene: sceneName } = props;
+
+    const navigator = navigation.navigators[navigatorName];
+    const scene = navigator.scenes[sceneName];
+
+    this.state = { loading: scene.active.value < 1 };
+  }
+
+  onValue = ({ name, value }) => {
     const eventNames = [
       'transitionend',
       'webkitTransitionEnd',
@@ -11,6 +22,7 @@ export default class Wrap extends Component {
       'MSTransitionEnd',
     ];
     const callback = () => {
+      if (name === 'active') this.changeLoadingOnValue(value);
       eventNames.forEach(eventName =>
         this.element.removeEventListener(eventName, callback, false)
       );
@@ -21,10 +33,24 @@ export default class Wrap extends Component {
     this.forceUpdate();
   };
 
+  changeLoadingOnValue = value => {
+    if (value === 1) this.setState({ loading: false });
+    else if (value === 0) this.setState({ loading: true });
+  };
+
+  changeLoadingOnWillValue = ({ name }) => {
+    const { navigator: navigatorName, scene: sceneName } = this.props;
+    const navigator = navigation.navigators[navigatorName];
+    const scene = navigator.scenes[sceneName];
+    if (scene[name].value === 1) this.setState({ loading: false });
+    else if (scene[name].value === 0) this.setState({ loading: true });
+  };
+
   componentDidMount() {
     const { navigator: navigatorName, scene: sceneName } = this.props;
     const navigator = navigation.navigators[navigatorName];
     const scene = navigator.scenes[sceneName];
+    scene.active.on('will_value', this.changeLoadingOnValue);
     scene.active.on('value', this.onValue);
   }
 
@@ -32,14 +58,16 @@ export default class Wrap extends Component {
     const { navigator: navigatorName, scene: sceneName } = this.props;
     const navigator = navigation.navigators[navigatorName];
     const scene = navigator.scenes[sceneName];
+    scene.active.off('will_value', this.changeLoadingOnValue);
     scene.active.off('value', this.onValue);
   }
 
   render() {
     const { navigator: navigatorName, scene: sceneName, children } = this.props;
+    const { loading } = this.state;
 
     const id = toId(navigatorName, sceneName);
-    const pass = { id };
+    const pass = { loading, id };
 
     const navigator = navigation.navigators[navigatorName];
     const scene = navigator.scenes[sceneName];
