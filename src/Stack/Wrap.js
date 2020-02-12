@@ -65,7 +65,12 @@ export default class Wrap extends Component {
   }
 
   render() {
-    const { navigator: navigatorName, scene: sceneName, children } = this.props;
+    const {
+      navigator: navigatorName,
+      scene: sceneName,
+      children,
+      style = {},
+    } = this.props;
     const { loading } = this.state;
 
     const id = toId(navigatorName, sceneName);
@@ -91,6 +96,7 @@ export default class Wrap extends Component {
           transitionDuration: `${scene.active.duration}ms`,
           overflowY: 'auto',
           backgroundColor: 'white',
+          ...style,
         }}
       >
         {typeof children === 'function' ? children(pass) : children}

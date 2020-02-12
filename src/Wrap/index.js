@@ -1,5 +1,5 @@
 import React from 'react';
-export default ({ children }) => (
+export default ({ children, style = {} }) => (
   <div
     style={{
       position: 'absolute',
@@ -8,6 +8,7 @@ export default ({ children }) => (
       right: 0,
       bottom: 0,
       overflow: 'hidden',
+      ...style,
     }}
   >
     {children}
