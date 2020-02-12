@@ -91,7 +91,7 @@ export default class Wrap extends Component {
           bottom: 0,
           transitionProperty: 'transform',
           transitionDuration: `${scene.active.duration}ms`,
-          overflowY: 'auto',
+          overflow: 'hidden',
           backgroundColor: 'white',
           ...style,
         }}
