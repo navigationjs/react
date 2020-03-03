@@ -10,7 +10,10 @@ export default class Wrap extends Component {
     const navigator = navigation.navigators[navigatorName];
     const scene = navigator.scenes[sceneName];
 
-    this.state = { loading: scene.active.value < 1 };
+    this.state = {
+      loading: scene.active.value < 1,
+      duration: scene.active.duration,
+    };
   }
 
   onValue = ({ name, value }) => {
@@ -38,19 +41,13 @@ export default class Wrap extends Component {
     else if (value === 0) this.setState({ loading: true });
   };
 
-  changeLoadingOnWillValue = ({ name }) => {
-    const { navigator: navigatorName, scene: sceneName } = this.props;
-    const navigator = navigation.navigators[navigatorName];
-    const scene = navigator.scenes[sceneName];
-    if (scene[name].value === 1) this.setState({ loading: false });
-    else if (scene[name].value === 0) this.setState({ loading: true });
-  };
+  onWillValue = ({ duration }) => this.setState({ duration });
 
   componentDidMount() {
     const { navigator: navigatorName, scene: sceneName } = this.props;
     const navigator = navigation.navigators[navigatorName];
     const scene = navigator.scenes[sceneName];
-    scene.active.on('will_value', this.changeLoadingOnValue);
+    scene.active.on('will_value', this.onWillValue);
     scene.active.on('value', this.onValue);
   }
 
@@ -58,7 +55,7 @@ export default class Wrap extends Component {
     const { navigator: navigatorName, scene: sceneName } = this.props;
     const navigator = navigation.navigators[navigatorName];
     const scene = navigator.scenes[sceneName];
-    scene.active.off('will_value', this.changeLoadingOnValue);
+    scene.active.off('will_value', this.onWillValue);
     scene.active.off('value', this.onValue);
   }
 
@@ -69,7 +66,7 @@ export default class Wrap extends Component {
       children,
       style = {},
     } = this.props;
-    const { loading } = this.state;
+    const { loading, duration } = this.state;
 
     const id = toId(navigatorName, sceneName);
     const pass = { loading, id };
@@ -90,7 +87,7 @@ export default class Wrap extends Component {
           right: 0,
           bottom: 0,
           transitionProperty: 'transform',
-          transitionDuration: `${scene.active.duration}ms`,
+          transitionDuration: `${duration}ms`,
           overflow: 'hidden',
           backgroundColor: 'white',
           ...style,
