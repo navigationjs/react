@@ -28,11 +28,12 @@ export default class Value extends BaseValue {
    * @param {number} duration
    */
   to = (value, duration = defaultDuration) => {
+    const fixedDuration = duration === 0 ? 0.1 : duration;
     const params = {
       __id: this.__id,
       name: this.name,
       value,
-      duration,
+      duration: fixedDuration,
     };
 
     this.emit(EVENTS.WILL_VALUE, params);
