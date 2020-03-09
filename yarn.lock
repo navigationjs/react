@@ -398,9 +398,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@navigationjs/core@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@navigationjs/core/-/core-0.9.0.tgz#a012ab03bc1f238c2f71d9aada7eabd941ce8e9b"
+"@navigationjs/core@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@navigationjs/core/-/core-0.10.0.tgz#5db5bdd98a6c79536e8b697bb5b6fd6eccadea07"
+  integrity sha512-/9eykt0aK3HsatLAO90FpH4H0OsG0L8mhJmjuYaui221pdHkEFzFw1wknGW7lOMVxd1QDik9bDauttna1UveqQ==
   dependencies:
     "@railsmob/events" "0.2.0"
 
