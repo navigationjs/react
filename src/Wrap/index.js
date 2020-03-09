@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import navigation from '@navigationjs/core'
+import navigation from '@navigationjs/core';
 
-let done = false
+let done = false;
 export default class Wrap extends Component {
   componentDidMount() {
     if (done) return;
